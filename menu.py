@@ -12,7 +12,7 @@ class Menu:
             if op =="1":
                 self.mostrar()
             elif op =="2":
-                pass
+                self.capturar()
             elif op =="0":
                 break
                 
@@ -21,3 +21,12 @@ class Menu:
         for u in usuarios:
             print("{0:2} {1:10} {2:10} {3:10} {4:25} {5:8} {6:2}".format(u[0],u[1],u[2],u[3],u[4],u[5],u[6]))
             
+    def capturar(self):
+        nombre = input("Nombre: ")
+        apellido1 = input("Apellido paterno: ")
+        apellido2 = input("Apellido materno: ")
+        correo = input("Correo: ")
+        password = input("Contraseña: ")
+        tipo = input("Tipo: ")
+        
+        self.inv.insertarUsuario([nombre,apellido1,apellido2,correo,password,tipo])
