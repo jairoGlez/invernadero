@@ -25,12 +25,22 @@ def agregar_usuario():
     correo = request.form['correo']
     password = request.form['password']
     tipo = request.form['tipo']
-    
+
     inv.insertarUsuario([nombre,apellido1,apellido2,correo,password,tipo])
-    
+
     respuesta = jsonify({'status':'Ok'})
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
-    
+
+    return respuesta
+
+@app.route("/buscarUsuario",methods=["POST"])
+def buscar():
+    print(request.form)
+    palabra = request.form["palabra"]
+    lista = inv.buscar(palabra)
+    respuesta = jsonify(lista)
+    respuesta.headers.add("Access-Control-Allow-Origin","*")
+
     return respuesta
 
 app.run()
